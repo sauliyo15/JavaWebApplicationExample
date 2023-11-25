@@ -1,5 +1,6 @@
 package ejemplos.servlet.curso;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,18 +15,14 @@ public class MyServlet2 extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-
+		//Obtener el parámetro de la solicitud
 		String nombreObtenido = request.getParameter("nombre");
 
-		// send HTML page to client
-		out.println("<html>");
-		out.println("<head><title>Ejemplo HTML desde Servlet</title></head>");
-		out.println("<body>");
-		out.println("<h1>Mensaje de bienvenida</h1>");
-		out.println("<h3>Bienvenido/a <u>" + nombreObtenido + "</u></h3>");
-		out.println("</body></html>");
-	}
+		//Establecer el parámetro como un atributo en el objeto request
+		request.setAttribute("nombre", nombreObtenido);
 
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/resultado.jsp");
+		requestDispatcher.forward(request, response);
+
+	}
 }

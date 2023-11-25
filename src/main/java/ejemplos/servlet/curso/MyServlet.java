@@ -1,5 +1,6 @@
 package ejemplos.servlet.curso;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,20 +15,9 @@ public class MyServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/inicio.jsp");
+		requestDispatcher.forward(request, response);
 
-		// send HTML page to client
-		out.println("<html>");
-		out.println("<head><title>Ejemplo HTML desde Servlet</title></head>");
-		out.println("<body>");
-		out.println("<h1>Inicio</h1>");
-		out.println("<form action=\"/myServlet2\">");
-		out.println("<label for=\"nombre\">Escribe tu nombre:</label>");
-		out.println("<input type=\"text\" id=\"nombre\" name=\"nombre\">");
-		out.println("<input type=\"submit\" value=\"Enviar\">");
-		out.println("</form> ");
-		out.println("</body></html>");
 	}
-
 }
+
