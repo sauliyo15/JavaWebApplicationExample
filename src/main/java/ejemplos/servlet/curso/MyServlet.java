@@ -15,7 +15,7 @@ public class MyServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/inicio.jsp");
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/vistas/inicio.jsp");
 		requestDispatcher.forward(request, response);
 
 	}

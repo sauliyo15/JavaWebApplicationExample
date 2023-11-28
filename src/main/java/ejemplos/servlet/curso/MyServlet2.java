@@ -21,7 +21,7 @@ public class MyServlet2 extends HttpServlet {
 		//Establecer el parámetro como un atributo en el objeto request
 		request.setAttribute("nombre", nombreObtenido);
 
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/resultado.jsp");
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/vistas/resultado.jsp");
 		requestDispatcher.forward(request, response);
 
 	}
